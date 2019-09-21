@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "$"
-var adminprefix = '$'
+var prefix = "H."
+var adminprefix = 'H.'
 
 
 //bc
@@ -23,7 +23,7 @@ client.on("message", message => {
 //bc online
 
 
-  var prefix = "$";
+  var prefix = "H.";
 
   client.on("message", message => {
   
@@ -56,7 +56,7 @@ client.on('ready',  () => {
   client.on('message', message => {
     if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('$adminbc')){
+if (message.content.startsWith('H.adminbc')){
 if(!message.author.id === '474354424391663616') return;
 message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
 client.users.forEach(m =>{
@@ -66,27 +66,27 @@ m.sendMessage(args)
 });
 
   client.on('message', msg => {
-    if(msg.content === '$help')
+    if(msg.content === 'H.help')
     msg.reply('Check Your DM :white_check_mark:')
   });
   
   
   client.on("message", message => {
-    if (message.content === "$help") {
+    if (message.content === "H.help") {
      const embed = new Discord.RichEmbed() 
          .setColor("#00FF00")
          .setThumbnail(message.author.avatarURL)
          .setDescription(`**Help|هيلب
-       $obc | لأرسال برود كاست للكل
-       $bc  |  لأرسال برود كاست للأونلاين
-       $adminbc | برودكاست عادي
+       H.obc | لأرسال برود كاست للكل
+       H.bc  |  لأرسال برود كاست للأونلاين
+       H.adminbc | برودكاست عادي
        ** `)
    message.author.sendEmbed(embed)
    
    }
    });
 
-const developers = ["356578511080783883","id"]
+const developers = ["474354424391663616","id"]
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
@@ -118,44 +118,6 @@ if (message.content.startsWith(adminprefix + 'setava')) {
   client.user.setAvatar(argresult);
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
-});
-
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('شات', 'welcome');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return;
-    let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(memberavatar)
-        .addField('🎽 | name :  ',`${member}`)
-        .addField('📢 | نورت السيرفر يا قلبي' , `Welcome to the server, ${member}`)
-        .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
-                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
-               
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
-                     
-                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
-                                       
-     .setFooter(`${member.guild.name}`)
-        .setTimestamp()
-   
-      channel.sendEmbed(embed);
-    });
-    
-    client.on('guildMemberRemove', member => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .setTitle(`الله معاك ✋:skin-tone-1: 😔`)
-        .setDescription(`مع السلامه تشرفنا بك ✋:skin-tone-1: 😔 `)
-        .addField('👤   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
-        .setColor('RED')
-        .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
-    
-    var channel =member.guild.channels.find('شات', 'welcome')
-    if (!channel) return;
-    channel.send({embed : embed});
-    })
- 
+}); 
 
 client.login(process.env.TOKEN);
